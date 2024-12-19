@@ -4,28 +4,28 @@
 // 1. Unidades de comprimento
     // Recebe o valor em metros(float) e retorna o valor em centimetros
     float metro2cent(float medida){
-        return medida*100;
+        return medida*100.0;
     }
     // Recebe o valor em metros(float) e retorna o valor em milimetros
     float metro2mili(float medida){
-        return medida*1000;
+        return medida*1000.0;
     }
 
     // Recebe o valor em centimetros(float) e retorna o valor em metros
     float cent2metro(float medida){
-        return medida/100;
+        return medida/100.0;
     }
     // Recebe o valor em centimetros(float) e retorna o valor em milimetros
     float cent2mili(float medida){
-        return medida*10;
+        return medida*10.0;
     }
     // Recebe o valor em milimetros(float) e retorna o valor em metros
     float mili2metro(float medida){
-        return medida/1000;
+        return medida/1000.0;
     }
     // Recebe o valor em milimetros(float) e retorna o valor em centimetros
     float mili2cent(float medida){
-        return medida/10;
+        return medida/10.;
     }
 //
 //
@@ -44,15 +44,33 @@
 //
 //
 // 4. Unidades de temperatura
-    float Cel2Fah(float temperatura);
-    float Cel2Kelvin(float temperatura);
+    // Recebe uma medida de temperatura em Graus Celsius e converte para Graus em  Fahrenheit
+    float Cel2Fah(float temperatura){
+        return ( temperatura*(9.0/5.0) )+ 32;
+    }
+    // Recebe uma medida de temperatura em Graus Celsius e converte para Graus em Kelvin
+    float Cel2Kelvin(float temperatura){
+       return temperatura+273.15;
+    }
 
-    float Fah2Cel(float temperatura);
-    float Fah2Kelvin(float temperatura);
+    // Recebe uma medida de temperatura em Graus Fahrenheit e converte para Graus em Celsius
+    float Fah2Cel(float temperatura){
+        return (temperatura-32)*(5.0/9.0);
+    }
+    // Recebe uma medida de temperatura em Graus Fahrenheit e converte para Graus em Kelvin
+    float Fah2Kelvin(float temperatura){
+        return ( (temperatura-32 ) *(5.0/9.0) )+ 273.15;
+    }
 
-    float Kelvin2Cel(float temperatura);
-    float Kelvin2Fah(float temperatura);
-    
+    // Recebe uma medida de temperatura em Graus Kelvin e converte para Graus em Celsius
+    float Kelvin2Cel(float temperatura){
+        return temperatura- 273.15;
+    }
+    // Recebe uma medida de temperatura em Graus Kelvin e converte para Graus em Fahrenheit
+    float Kelvin2Fah(float temperatura){
+        return  ( (temperatura-273.15)*(9.0/5.0) )+32;
+    }
+
 //
 //
 //
@@ -96,6 +114,6 @@
 
 int main()
 {
-    printf("Hello, World!\n");
-    return 0;
+    //printf("Hello, World!\n");
+    //return 0;
 }
