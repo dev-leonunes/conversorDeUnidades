@@ -2,7 +2,14 @@
 #include <math.h>
 
 // 1. Unidades de comprimento
-//
+    float metro2cent(float medida);
+    float metro2mili(float medida);
+
+    float cent2metro(float medida);
+    float cent2mili(float medida);
+
+    float mili2metro(float medida);
+    float mili2cent(float medida);
 //
 //
 //
