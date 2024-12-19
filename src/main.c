@@ -2,14 +2,31 @@
 #include <math.h>
 
 // 1. Unidades de comprimento
-    float metro2cent(float medida);
-    float metro2mili(float medida);
+    // Recebe o valor em metros(float) e retorna o valor em centimetros
+    float metro2cent(float medida){
+        return medida*100;
+    }
+    // Recebe o valor em metros(float) e retorna o valor em milimetros
+    float metro2mili(float medida){
+        return medida*1000;
+    }
 
-    float cent2metro(float medida);
-    float cent2mili(float medida);
-
-    float mili2metro(float medida);
-    float mili2cent(float medida);
+    // Recebe o valor em centimetros(float) e retorna o valor em metros
+    float cent2metro(float medida){
+        return medida/100;
+    }
+    // Recebe o valor em centimetros(float) e retorna o valor em milimetros
+    float cent2mili(float medida){
+        return medida*10;
+    }
+    // Recebe o valor em milimetros(float) e retorna o valor em metros
+    float mili2metro(float medida){
+        return medida/1000;
+    }
+    // Recebe o valor em milimetros(float) e retorna o valor em centimetros
+    float mili2cent(float medida){
+        return medida/10;
+    }
 //
 //
 //
