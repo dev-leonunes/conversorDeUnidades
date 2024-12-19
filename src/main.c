@@ -44,7 +44,15 @@
 //
 //
 // 4. Unidades de temperatura
-//
+    float Cel2Fah(float temperatura);
+    float Cel2Kelvin(float temperatura);
+
+    float Fah2Cel(float temperatura);
+    float Fah2Kelvin(float temperatura);
+
+    float Kelvin2Cel(float temperatura);
+    float Kelvin2Fah(float temperatura);
+    
 //
 //
 //
