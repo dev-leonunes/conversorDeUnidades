@@ -2,31 +2,7 @@
 #include <math.h>
 
 // 1. Unidades de comprimento
-    // Recebe o valor em metros(float) e retorna o valor em centimetros
-    float metro2cent(float medida){
-        return medida*100.0;
-    }
-    // Recebe o valor em metros(float) e retorna o valor em milimetros
-    float metro2mili(float medida){
-        return medida*1000.0;
-    }
-
-    // Recebe o valor em centimetros(float) e retorna o valor em metros
-    float cent2metro(float medida){
-        return medida/100.0;
-    }
-    // Recebe o valor em centimetros(float) e retorna o valor em milimetros
-    float cent2mili(float medida){
-        return medida*10.0;
-    }
-    // Recebe o valor em milimetros(float) e retorna o valor em metros
-    float mili2metro(float medida){
-        return medida/1000.0;
-    }
-    // Recebe o valor em milimetros(float) e retorna o valor em centimetros
-    float mili2cent(float medida){
-        return medida/10.;
-    }
+//
 //
 //
 //
@@ -44,33 +20,63 @@
 //
 //
 // 4. Unidades de temperatura
-    // Recebe uma medida de temperatura em Graus Celsius e converte para Graus em  Fahrenheit
-    float Cel2Fah(float temperatura){
-        return ( temperatura*(9.0/5.0) )+ 32;
+    /* Conversor de unidades de temperatura
+    |   Recebe uma mediada de temepratura em Graus Celsius,Fahreheint ou Kelvin e converte para a outra escala
+    |   Paramêtros:
+    |               -> temperatura(float): o valor de temperatura a ser convertido
+    |               -> escala(char): a escala de temperatura da medida
+    |                   'F': escala Fahrenheit
+    |                   'C': escala Celsius
+    |                   'K': escala Kelvin
+    |               -> nova_escala(string): a escala de temperatura a ser convertida
+    |                   'F': escala Fahrenheit
+    |                   'C': escala Celsius
+    |                   'K': escala Kelvin
+    |   Retorno:
+    |               -> temperatura_convertida(float): o valor da medida na nova escala
+    */
+    float conversor_temperatura(float temperatura,char escala, char nova_escala){
+        float temperatura_convertida = 0;
+        // seleciona qual a escala atual da medida
+        switch(escala){
+            // Caso seja a conversão de uma medida em graus Celsius
+            case 'C':
+                // Converte de Celsius para Fahrenheit
+                if(nova_escala == 'F'){
+                    temperatura_convertida = ( temperatura*(9.0/5.0) )+ 32;
+                }
+                // Converte de Celsius para Kelvin
+                else{
+                    temperatura_convertida=temperatura+273.15;
+                }
+                break;
+            // Caso seja a conversão de uma medida em graus Fahrenheit
+            case 'F':
+                // Converte de Fahrenheit para Celsius
+                if(nova_escala == 'C'){
+                    temperatura_convertida = (temperatura-32)*(5.0/9.0);
+                }
+                // Converte de Fahrenheit para Kelvin
+                else{
+                    temperatura_convertida=( (temperatura-32 ) *(5.0/9.0) )+ 273.15;
+                }
+                break;
+            // Caso seja a conversão de uma medida em graus Kelvin
+            case 'K':
+                // Converte de Kelvin para Celsius
+                if(nova_escala == 'C'){
+                    temperatura_convertida =temperatura- 273.15;
+                }
+                // Converte de Kelvin para Fahrenheit
+                else{
+                    temperatura_convertida=( (temperatura-273.15)*(9.0/5.0) )+32;
+                }
+                break;
+            default:
+                break;
+        }
+        return temperatura_convertida;
     }
-    // Recebe uma medida de temperatura em Graus Celsius e converte para Graus em Kelvin
-    float Cel2Kelvin(float temperatura){
-       return temperatura+273.15;
-    }
-
-    // Recebe uma medida de temperatura em Graus Fahrenheit e converte para Graus em Celsius
-    float Fah2Cel(float temperatura){
-        return (temperatura-32)*(5.0/9.0);
-    }
-    // Recebe uma medida de temperatura em Graus Fahrenheit e converte para Graus em Kelvin
-    float Fah2Kelvin(float temperatura){
-        return ( (temperatura-32 ) *(5.0/9.0) )+ 273.15;
-    }
-
-    // Recebe uma medida de temperatura em Graus Kelvin e converte para Graus em Celsius
-    float Kelvin2Cel(float temperatura){
-        return temperatura- 273.15;
-    }
-    // Recebe uma medida de temperatura em Graus Kelvin e converte para Graus em Fahrenheit
-    float Kelvin2Fah(float temperatura){
-        return  ( (temperatura-273.15)*(9.0/5.0) )+32;
-    }
-
 //
 //
 //
