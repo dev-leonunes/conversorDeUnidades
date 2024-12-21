@@ -16,32 +16,31 @@
 // 3. Unidades de volume
 double converterVolume(double valorConvertido, int unidadeOrigem, int unidadeDestino) {
 
-    // l = litros
-    // m = mililitros
-    // c = metros cubicos
+    // 1 = litro
+    // 2 = mililitro
+    // 3 = metro cubico
 
     // validação de erro de entrada
-    if ((unidadeOrigem != 'l' && unidadeOrigem != 'm' && unidadeOrigem != 'c') ||
-        (unidadeDestino != 'l' && unidadeDestino != 'm' && unidadeDestino != 'c')) {
-        return -1; 
+    if ((unidadeOrigem < 1 || unidadeOrigem > 3) || (unidadeDestino < 1 || unidadeDestino > 3)) {
+        return -1;
     }
 
     // usando litros como valor base
     double litros;
 
-    if (unidadeOrigem == 'l') {
+    if (unidadeOrigem == 1) {
         litros = valorConvertido;
-    } else if (unidadeOrigem == 'm') {
+    } else if (unidadeOrigem == 2) {
         litros = valorConvertido / 1000.0;
-    } else if (unidadeDestino == 'c') {
+    } else if (unidadeDestino == 3) {
         litros = valorConvertido * 1000.0;
     }
 
-    if (unidadeDestino == 'l') {
+    if (unidadeDestino == 1) {
         return litros;
-    } else if (unidadeDestino == 'm') {
+    } else if (unidadeDestino == 2) {
         return litros * 1000.0;
-    } else if (unidadeDestino == 'c') {
+    } else if (unidadeDestino == 3) {
         return litros / 1000.0;
     }
 
@@ -50,8 +49,8 @@ double converterVolume(double valorConvertido, int unidadeOrigem, int unidadeDes
 
 int main() {
 // Testes 
-    printf("5 litros = %.2f mililitros\n", converterVolume(5, 'l', 'm'));
-    printf("3000 mililitros = %.2f litros\n", converterVolume(3000, 'm', 'l'));
+    printf("5 litros = %.2f mililitros\n", converterVolume(5, 1, 2));
+    printf("3000 mililitros = %.2f litros\n", converterVolume(3000, 2, 1));
 }
 
 // 4. Unidades de temperatura
