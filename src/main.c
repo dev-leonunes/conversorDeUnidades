@@ -87,7 +87,7 @@ int main()
             return 0;
         case 1:
         {
-            float valorComprimento;
+            float valorComprimento, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuComprimento();
@@ -102,12 +102,13 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // conversaoComprimento(valorComprimento, opcaoOrigem, opcaoDestino);
+            // valorConvertido = conversaoComprimento(valorComprimento, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido é %.2f\n", valorComprimento, valorConvertido);
             break;
         }
         case 2:
         {
-            float valorMassa;
+            float valorMassa, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuMassa();
@@ -122,12 +123,13 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // conversaoMassa(valorMassa, opcaoOrigem, opcaoDestino);
+            // valorConvertido = conversaoMassa(valorMassa, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido é %.2f\n", valorMassa, valorConvertido);
             break;
         }
         case 3:
         {
-            float valorVolume;
+            float valorVolume, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuVolume();
@@ -142,12 +144,13 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // conversaoVolume(valorVolume, opcaoOrigem, opcaoDestino);
+            // valorConvertido = conversaoVolume(valorVolume, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido é %.2f\n", valorVolume, valorConvertido);
             break;
         }
         case 4:
         {
-            float valorTemperatura;
+            float valorTemperatura, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuTemperatura();
@@ -162,12 +165,13 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // conversaoTemperatura(valorTemperatura, opcaoOrigem, opcaoDestino);
+            // valorConvertido = (valorTemperatura, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido é %.2f\n", valorTemperatura, valorConvertido);
             break;
         }
         case 5:
         {
-            float valorVelocidade;
+            float valorVelocidade, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuVelocidade();
@@ -182,12 +186,13 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // conversaoVelocidade(valorVelocidade, opcaoOrigem, opcaoDestino);
+            // valorConvertido = conversaoVelocidade(valorVelocidade, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido é %.2f\n", valorVelocidade, valorConvertido);
             break;
         }
         case 6:
         {
-            float valorPotencia;
+            float valorPotencia, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuPotencia();
@@ -202,12 +207,13 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // conversaoPotencia(valorPotencia, opcaoOrigem, opcaoDestino);
+            // valorConvertido = (valorPotencia, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido é %.2f\n", valorPotencia, valorConvertido);
             break;
         }
         case 7:
         {
-            float valorArea;
+            float valorArea, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuArea();
@@ -221,12 +227,13 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // conversaoArea(valorArea, opcaoOrigem, opcaoDestino);
+            // valorConvertido = conversaoArea(valorArea, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido é %.2f\n", valorArea, valorConvertido);
             break;
         }
         case 8:
         {
-            float valorTempo;
+            float valorTempo, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuTempo();
@@ -241,12 +248,13 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // conversaoTempo(valorTempo, opcaoOrigem, opcaoDestino);
+            valorConvertido = conversaoTempo(valorTempo, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido é %.2f\n", valorTempo, valorConvertido);
             break;
         }
         case 9:
         {
-            float valorArmazenamento;
+            float valorArmazenamento, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuArmazenamento();
@@ -261,7 +269,8 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // conversaoArmazenamento(valorArmazenamento, opcaoOrigem, opcaoDestino);
+            // valorConvertido = conversaoArmazenamento(valorArmazenamento, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido é %.2f\n", valorArmazenamento, valorConvertido);
             break;
         }
         default:
