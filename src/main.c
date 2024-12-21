@@ -47,12 +47,6 @@ double converterVolume(double valorConvertido, int unidadeOrigem, int unidadeDes
     return -1;
 }
 
-int main() {
-// Testes 
-    printf("5 litros = %.2f mililitros\n", converterVolume(5, 1, 2));
-    printf("3000 mililitros = %.2f litros\n", converterVolume(3000, 2, 1));
-}
-
 // 4. Unidades de temperatura
 //
 //
