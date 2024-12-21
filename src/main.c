@@ -44,33 +44,7 @@
 //
 //
 // 4. Unidades de temperatura
-    // Recebe uma medida de temperatura em Graus Celsius e converte para Graus em  Fahrenheit
-    float Cel2Fah(float temperatura){
-        return ( temperatura*(9.0/5.0) )+ 32;
-    }
-    // Recebe uma medida de temperatura em Graus Celsius e converte para Graus em Kelvin
-    float Cel2Kelvin(float temperatura){
-       return temperatura+273.15;
-    }
-
-    // Recebe uma medida de temperatura em Graus Fahrenheit e converte para Graus em Celsius
-    float Fah2Cel(float temperatura){
-        return (temperatura-32)*(5.0/9.0);
-    }
-    // Recebe uma medida de temperatura em Graus Fahrenheit e converte para Graus em Kelvin
-    float Fah2Kelvin(float temperatura){
-        return ( (temperatura-32 ) *(5.0/9.0) )+ 273.15;
-    }
-
-    // Recebe uma medida de temperatura em Graus Kelvin e converte para Graus em Celsius
-    float Kelvin2Cel(float temperatura){
-        return temperatura- 273.15;
-    }
-    // Recebe uma medida de temperatura em Graus Kelvin e converte para Graus em Fahrenheit
-    float Kelvin2Fah(float temperatura){
-        return  ( (temperatura-273.15)*(9.0/5.0) )+32;
-    }
-
+//
 //
 //
 //
