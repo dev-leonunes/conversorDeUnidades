@@ -5,44 +5,13 @@
 #include <math.h>
 #include <string.h>
 
-// cria uma enumeração para a função de conversão de unidades de medida
-enum Comprimentos
-{
-    Km = 1,
-    Hm,
-    Dam,
-    M,
-    Dm,
-    Cm,
-    Mm
-};
 // 1. Unidades de comprimento
-/* Conversor de unidades de comprimento
-    |   Recebe uma medida de comprimento converte para outro multiplo ou submultiplo, ex Km->m
-    |   Paramêtros:
-    |               -> comprimento(float): o valor de compriemnto a ser convertido
-    |               -> escala(int): a escala de comprimento da medida, os valores foram definidos em
-    |                   em uma enumeração como mostrado abaixo
-    |                   Km:  escala em quilomêtros
-    |                   Hm:  escala em hectomêtros
-    |                   Dam: escala decâmetros
-    |                   M:   escala em metros
-    |                   Dm:  escala e decómetros
-    |                   Cm:  escala em centímetros
-    |                   mm:  escala em milimetros
-    |               -> nova_escala(int): a escala de  comprimento  a ser convertida
-    |                   Km:  escala em quilomêtros
-    |                   Hm:  escala em hectomêtros
-    |                   Dam: escala decâmetros
-    |                   M:   escala em metros
-    |                   Dm:  escala e decómetros
-    |                   Cm:  escala em centímetros
-    |                   mm:  escala em milimetros
-    |   Retorno:
-    |               -> comprimento_convertido(float): o valor da medida na nova escala
-    */
 float conversor_comprimento(float comprimento, int escala, int nova_escala)
 {
+    // 1 = Metro
+    // 2 = Centimetro
+    // 3 = Milimetro
+
     float comprimento_convertido = 0;
     int diferenca = 0; // recebe a diferença de posições entre as escalas
     // Determina o fator de conversão pelas potências de 10
@@ -51,25 +20,27 @@ float conversor_comprimento(float comprimento, int escala, int nova_escala)
     if (escala < nova_escala)
     {
         diferenca = nova_escala - escala;
+        if (escala == 1)
+            diferenca++;
         comprimento_convertido = comprimento * (1.0 * pow(10, diferenca));
     }
     // se a escala atual tem uma valor maior que a nova escala
     else if (escala > nova_escala)
     {
         diferenca = escala - nova_escala;
+        if (nova_escala == 1)
+            diferenca++;
         comprimento_convertido = comprimento / (1.0 * pow(10, diferenca));
     }
-    // caseo sejam as mesmas esalas então nada se altera
+    // caso sejam as mesmas escalas então nada se altera
     else
     {
         comprimento_convertido = comprimento;
     }
+
     return comprimento_convertido;
 }
-//
-//
-//
-//
+
 // 2. Unidades de massa
 //
 //
@@ -122,31 +93,19 @@ float converterVolume(double valorConvertido, int unidadeOrigem, int unidadeDest
 }
 
 // 4. Unidades de temperatura
-/* Conversor de unidades de temperatura
-|   Recebe uma mediada de temepratura em Graus Celsius,Fahreheint ou Kelvin e converte para a outra escala
-|   Paramêtros:
-|               -> temperatura(float): o valor de temperatura a ser convertido
-|               -> escala(char): a escala de temperatura da medida
-|                   'F': escala Fahrenheit
-|                   'C': escala Celsius
-|                   'K': escala Kelvin
-|               -> nova_escala(string): a escala de temperatura a ser convertida
-|                   'F': escala Fahrenheit
-|                   'C': escala Celsius
-|                   'K': escala Kelvin
-|   Retorno:
-|               -> temperatura_convertida(float): o valor da medida na nova escala
-*/
-float conversor_temperatura(float temperatura, char escala, char nova_escala)
+float conversor_temperatura(float temperatura, int escala, int nova_escala)
 {
+    // 1 = Celsius
+    // 2 = Fahrenheit
+    // 3 = Kelvin
+
     float temperatura_convertida = 0;
     // seleciona qual a escala atual da medida
     switch (escala)
     {
-    // Caso seja a conversão de uma medida em graus Celsius
-    case 'C':
+    case 1:
         // Converte de Celsius para Fahrenheit
-        if (nova_escala == 'F')
+        if (nova_escala == 2)
         {
             temperatura_convertida = (temperatura * (9.0 / 5.0)) + 32;
         }
@@ -156,10 +115,9 @@ float conversor_temperatura(float temperatura, char escala, char nova_escala)
             temperatura_convertida = temperatura + 273.15;
         }
         break;
-    // Caso seja a conversão de uma medida em graus Fahrenheit
-    case 'F':
+    case 2:
         // Converte de Fahrenheit para Celsius
-        if (nova_escala == 'C')
+        if (nova_escala == 1)
         {
             temperatura_convertida = (temperatura - 32) * (5.0 / 9.0);
         }
@@ -169,10 +127,9 @@ float conversor_temperatura(float temperatura, char escala, char nova_escala)
             temperatura_convertida = ((temperatura - 32) * (5.0 / 9.0)) + 273.15;
         }
         break;
-    // Caso seja a conversão de uma medida em graus Kelvin
-    case 'K':
+    case 3:
         // Converte de Kelvin para Celsius
-        if (nova_escala == 'C')
+        if (nova_escala == 1)
         {
             temperatura_convertida = temperatura - 273.15;
         }
@@ -185,17 +142,13 @@ float conversor_temperatura(float temperatura, char escala, char nova_escala)
     default:
         break;
     }
+
     return temperatura_convertida;
 }
-//
-//
-//
-//
+
 // 5. Unidades de velocidade
 double conversaoVelocidade(double convertido, int origem, int destino)
 {
-    int escolha1, escolha2;
-
     // 1 = m/s
     // 2 = km/h
     // 3 = mph
@@ -245,54 +198,16 @@ double conversaoVelocidade(double convertido, int origem, int destino)
         }
         break;
     }
+
     return convertido;
 }
+
 // 6. Unidades de potência
-void MenuPot() {
-    int opcao;
-    float valor, resultado;
-    printf("Escolha uma opcao:\n");
-    printf("1 - Converter de kW para CV\n");
-    printf("2 - Converter de CV para kW\n");
-    printf("3 - Converter de kW para HP\n");
-    printf("4 - Converter de HP para kW\n");
-    printf("0 - Sair\n");
-        printf("Digite a sua opcao: ");
-        scanf("%d", &opcao);
-
-        switch (opcao) {
-            case 1:
-                printf("Digite o valor em kW: ");
-                scanf("%f", &valor);
-                resultado = valor * 1.36;
-                printf("%.2f kW equivalente a %.2f CV.\n\n", valor, resultado);
-                break;
-            case 2:
-                printf("Digite o valor em CV: ");
-                scanf("%f", &valor);
-                resultado = valor / 1.36;
-                printf("%.2f CV equivalente a %.2f kW.\n\n", valor, resultado);
-                break;
-            case 3:
-                printf("Digite o valor em kW: ");
-                scanf("%f", &valor);
-                resultado = valor * 1.341;
-                printf("%.2f kW equivalente a %.2f HP.\n\n", valor, resultado);
-                break;
-            case 4:
-                printf("Digite o valor em HP: ");
-                scanf("%f", &valor);
-                resultado = valor / 1.341;
-                printf("%.2f HP equivalente a %.2f kW.\n\n", valor, resultado);
-                break;
-            case 0:
-                printf("Retornando ao menu principal.\n");
-                break;
-            default:
-                printf("Escolha invalida! Tente novamente.\n\n");
-
-        }
-}
+//
+//
+//
+//
+//
 // 7. Unidades de área
 //
 //
@@ -319,6 +234,7 @@ int menuMassa();
 int menuVolume();
 int menuTemperatura();
 int menuVelocidade();
+int menuPotencia();
 int menuArea();
 int menuTempo();
 int menuArmazenamento();
@@ -355,8 +271,8 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = conversaoComprimento(valorComprimento, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorComprimento, valorConvertido);
+            valorConvertido = conversor_comprimento(valorComprimento, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorComprimento, valorConvertido);
             goto finally;
         }
         case 2:
@@ -418,8 +334,8 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = (valorTemperatura, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorTemperatura, valorConvertido);
+            valorConvertido = (valorTemperatura, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorTemperatura, valorConvertido);
             goto finally;
         }
         case 5:
@@ -439,13 +355,25 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = conversaoVelocidade(valorVelocidade, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorVelocidade, valorConvertido);
+            valorConvertido = conversaoVelocidade(valorVelocidade, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorVelocidade, valorConvertido);
             goto finally;
         }
         case 6:
         {
-           MenuPot();
+            float valorPotencia, valorConvertido;
+
+            printf("Escolha a unidade de origem\n");
+            int opcaoOrigem = menuPotencia();
+            if (opcaoOrigem == 0)
+                break;
+
+            printf("Digite o valor a ser convertido: ");
+            scanf("%f", &valorPotencia);
+
+            printf("Escolha a unidade de destino\n");
+            int opcaoDestino = menuPotencia();
+            if (opcaoDestino == 0)
                 break;
 
             // valorConvertido = (valorPotencia, opcaoOrigem, opcaoDestino);
@@ -719,6 +647,37 @@ int menuVelocidade()
     }
 }
 
+int menuPotencia()
+{
+    int opcao;
+    printf("\n");
+    printf("--------------------------------\n");
+    printf("Unidades de potência\n");
+    printf("1. Watt (W)\n");
+    printf("2. Kilowatt (kW)\n");
+    printf("3. Cavalo-vapor (cv)\n");
+    printf("0. Voltar\n");
+    printf("--------------------------------\n");
+    printf("Digite a opção desejada: ");
+
+    if (scanf("%d", &opcao) != 1)
+    {
+        while (getchar() != '\n')
+            ;
+        printf("Entrada inválida! Por favor, digite um número.\n");
+        return -1;
+    }
+
+    if (opcao < 0 || opcao > 3)
+    {
+        printf("Opção inválida!\n");
+        return -1;
+    }
+    else
+    {
+        return opcao;
+    }
+}
 
 int menuArea()
 {
