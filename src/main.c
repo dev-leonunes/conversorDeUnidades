@@ -69,11 +69,47 @@ float converterVolume(double valorConvertido, int unidadeOrigem, int unidadeDest
 //
 //
 // 5. Unidades de velocidade
-//
-//
-//
-//
-//
+double conversaoVelocidade(double convertido, int origem, int destino){
+    int escolha1,escolha2;
+
+    // 1 = m/s
+    // 2 = km/h
+    // 3 = mph
+
+    switch(origem){
+            break;
+        case 1:
+        switch(destino){
+            case 1: convertido = convertido;
+                break;
+            case 2: convertido = convertido*3.6;
+                break;
+            case 3: convertido = convertido*2.236;
+                break;
+        }
+        case 2: 
+        switch(destino){ 
+            case 1: convertido = convertido/3.6;
+                break;
+            case 2: convertido = convertido;
+                break;
+            case 3: convertido = convertido*1.609;
+                break;
+        }
+            break;
+        case 3:
+        switch(destino){
+            case 1: convertido = convertido/2.236;
+                break;
+            case 2: convertido = convertido/1.609;
+                break;
+            case 3: convertido = convertido;
+                break;
+        }
+            break;
+    }
+    return convertido;
+}
 // 6. Unidades de potência
 //
 //
@@ -212,7 +248,7 @@ int main()
         }
         case 5:
         {
-            float valorVelocidade, valorConvertido;
+            double valorVelocidade, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuVelocidade();
@@ -220,7 +256,7 @@ int main()
                 break;
 
             printf("Digite o valor a ser convertido: ");
-            scanf("%f", &valorVelocidade);
+            scanf("%lf", &valorVelocidade);
 
             printf("Escolha a unidade de destino\n");
             int opcaoDestino = menuVelocidade();
@@ -230,6 +266,7 @@ int main()
             // valorConvertido = conversaoVelocidade(valorVelocidade, opcaoOrigem, opcaoDestino);
             // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorVelocidade, valorConvertido);
             goto finally;
+
         }
         case 6:
         {
