@@ -167,11 +167,51 @@ double conversaoVelocidade(double convertido, int origem, int destino){
     return convertido;
 }
 // 6. Unidades de potência
-//
-//
-//
-//
-//
+void MenuPot() {
+    int opcao;
+    float valor, resultado;
+    printf("Escolha uma opcao:\n");
+    printf("1 - Converter de kW para CV\n");
+    printf("2 - Converter de CV para kW\n");
+    printf("3 - Converter de kW para HP\n");
+    printf("4 - Converter de HP para kW\n");
+    printf("0 - Sair\n");
+        printf("Digite a sua opcao: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Digite o valor em kW: ");
+                scanf("%f", &valor);
+                resultado = valor * 1.36;
+                printf("%.2f kW equivalente a %.2f CV.\n\n", valor, resultado);
+                break;
+            case 2:
+                printf("Digite o valor em CV: ");
+                scanf("%f", &valor);
+                resultado = valor / 1.36;
+                printf("%.2f CV equivalente a %.2f kW.\n\n", valor, resultado);
+                break;
+            case 3:
+                printf("Digite o valor em kW: ");
+                scanf("%f", &valor);
+                resultado = valor * 1.341;
+                printf("%.2f kW equivalente a %.2f HP.\n\n", valor, resultado);
+                break;
+            case 4:
+                printf("Digite o valor em HP: ");
+                scanf("%f", &valor);
+                resultado = valor / 1.341;
+                printf("%.2f HP equivalente a %.2f kW.\n\n", valor, resultado);
+                break;
+            case 0:
+                printf("Retornando ao menu principal.\n");
+                break;
+            default:
+                printf("Escolha invalida! Tente novamente.\n\n");
+
+        }
+}
 // 7. Unidades de área
 //
 //
@@ -198,7 +238,6 @@ int menuMassa();
 int menuVolume();
 int menuTemperatura();
 int menuVelocidade();
-int menuPotencia();
 int menuArea();
 int menuTempo();
 int menuArmazenamento();
@@ -326,19 +365,7 @@ int main()
         }
         case 6:
         {
-            float valorPotencia, valorConvertido;
-
-            printf("Escolha a unidade de origem\n");
-            int opcaoOrigem = menuPotencia();
-            if (opcaoOrigem == 0)
-                break;
-
-            printf("Digite o valor a ser convertido: ");
-            scanf("%f", &valorPotencia);
-
-            printf("Escolha a unidade de destino\n");
-            int opcaoDestino = menuPotencia();
-            if (opcaoDestino == 0)
+           MenuPot();
                 break;
 
             // valorConvertido = (valorPotencia, opcaoOrigem, opcaoDestino);
@@ -612,37 +639,6 @@ int menuVelocidade()
     }
 }
 
-int menuPotencia()
-{
-    int opcao;
-    printf("\n");
-    printf("--------------------------------\n");
-    printf("Unidades de potência\n");
-    printf("1. Watt (W)\n");
-    printf("2. Kilowatt (kW)\n");
-    printf("3. Cavalo-vapor (cv)\n");
-    printf("0. Voltar\n");
-    printf("--------------------------------\n");
-    printf("Digite a opção desejada: ");
-
-    if (scanf("%d", &opcao) != 1)
-    {
-        while (getchar() != '\n')
-            ;
-        printf("Entrada inválida! Por favor, digite um número.\n");
-        return -1;
-    }
-
-    if (opcao < 0 || opcao > 3)
-    {
-        printf("Opção inválida!\n");
-        return -1;
-    }
-    else
-    {
-        return opcao;
-    }
-}
 
 int menuArea()
 {
