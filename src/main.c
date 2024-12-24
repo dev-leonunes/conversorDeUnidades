@@ -6,11 +6,42 @@
 #include <string.h>
 
 // 1. Unidades de comprimento
-//
-//
-//
-//
-//
+float conversor_comprimento(float comprimento, int escala, int nova_escala)
+{
+    // 1 = Metro
+    // 2 = Centimetro
+    // 3 = Milimetro
+
+    float comprimento_convertido = 0;
+    int diferenca = 0; // recebe a diferença de posições entre as escalas
+    // Determina o fator de conversão pelas potências de 10
+
+    if (escala < nova_escala)
+    {
+        diferenca = nova_escala - escala;
+        if (escala == 1)
+        {
+            diferenca++;
+        }
+        comprimento_convertido = comprimento * (1.0 * pow(10, diferenca));
+    }
+    else if (escala > nova_escala)
+    {
+        diferenca = escala - nova_escala;
+        if (nova_escala == 1)
+        {
+            diferenca++;
+        }
+        comprimento_convertido = comprimento / (1.0 * pow(10, diferenca));
+    }
+    else
+    {
+        comprimento_convertido = comprimento;
+    }
+
+    return comprimento_convertido;
+}
+
 // 2. Unidades de massa
 //
 //
@@ -63,109 +94,114 @@ float converterVolume(double valorConvertido, int unidadeOrigem, int unidadeDest
 }
 
 // 4. Unidades de temperatura
-    /* Conversor de unidades de temperatura
-    |   Recebe uma mediada de temepratura em Graus Celsius,Fahreheint ou Kelvin e converte para a outra escala
-    |   Paramêtros:
-    |               -> temperatura(float): o valor de temperatura a ser convertido
-    |               -> escala(char): a escala de temperatura da medida
-    |                   'F': escala Fahrenheit
-    |                   'C': escala Celsius
-    |                   'K': escala Kelvin
-    |               -> nova_escala(string): a escala de temperatura a ser convertida
-    |                   'F': escala Fahrenheit
-    |                   'C': escala Celsius
-    |                   'K': escala Kelvin
-    |   Retorno:
-    |               -> temperatura_convertida(float): o valor da medida na nova escala
-    */
-    float conversor_temperatura(float temperatura,char escala, char nova_escala){
-        float temperatura_convertida = 0;
-        // seleciona qual a escala atual da medida
-        switch(escala){
-            // Caso seja a conversão de uma medida em graus Celsius
-            case 'C':
-                // Converte de Celsius para Fahrenheit
-                if(nova_escala == 'F'){
-                    temperatura_convertida = ( temperatura*(9.0/5.0) )+ 32;
-                }
-                // Converte de Celsius para Kelvin
-                else{
-                    temperatura_convertida=temperatura+273.15;
-                }
-                break;
-            // Caso seja a conversão de uma medida em graus Fahrenheit
-            case 'F':
-                // Converte de Fahrenheit para Celsius
-                if(nova_escala == 'C'){
-                    temperatura_convertida = (temperatura-32)*(5.0/9.0);
-                }
-                // Converte de Fahrenheit para Kelvin
-                else{
-                    temperatura_convertida=( (temperatura-32 ) *(5.0/9.0) )+ 273.15;
-                }
-                break;
-            // Caso seja a conversão de uma medida em graus Kelvin
-            case 'K':
-                // Converte de Kelvin para Celsius
-                if(nova_escala == 'C'){
-                    temperatura_convertida =temperatura- 273.15;
-                }
-                // Converte de Kelvin para Fahrenheit
-                else{
-                    temperatura_convertida=( (temperatura-273.15)*(9.0/5.0) )+32;
-                }
-                break;
-            default:
-                break;
-        }
-        return temperatura_convertida;
-    }
-//
-//
-//
-//
-// 5. Unidades de velocidade
-double conversaoVelocidade(double convertido, int origem, int destino){
-    int escolha1,escolha2;
+float conversor_temperatura(float temperatura, int escala, int nova_escala)
+{
+    // 1 = Celsius
+    // 2 = Fahrenheit
+    // 3 = Kelvin
 
+    float temperatura_convertida = 0;
+    // seleciona qual a escala atual da medida
+    switch (escala)
+    {
+    case 1:
+        // Converte de Celsius para Fahrenheit
+        if (nova_escala == 2)
+        {
+            temperatura_convertida = (temperatura * (9.0 / 5.0)) + 32;
+        }
+        // Converte de Celsius para Kelvin
+        else
+        {
+            temperatura_convertida = temperatura + 273.15;
+        }
+        break;
+    case 2:
+        // Converte de Fahrenheit para Celsius
+        if (nova_escala == 1)
+        {
+            temperatura_convertida = (temperatura - 32) * (5.0 / 9.0);
+        }
+        // Converte de Fahrenheit para Kelvin
+        else
+        {
+            temperatura_convertida = ((temperatura - 32) * (5.0 / 9.0)) + 273.15;
+        }
+        break;
+    case 3:
+        // Converte de Kelvin para Celsius
+        if (nova_escala == 1)
+        {
+            temperatura_convertida = temperatura - 273.15;
+        }
+        // Converte de Kelvin para Fahrenheit
+        else
+        {
+            temperatura_convertida = ((temperatura - 273.15) * (9.0 / 5.0)) + 32;
+        }
+        break;
+    default:
+        break;
+    }
+
+    return temperatura_convertida;
+}
+
+// 5. Unidades de velocidade
+double conversaoVelocidade(double convertido, int origem, int destino)
+{
     // 1 = m/s
     // 2 = km/h
     // 3 = mph
 
-    switch(origem){
-            break;
+    switch (origem)
+    {
+        break;
+    case 1:
+        switch (destino)
+        {
         case 1:
-        switch(destino){
-            case 1: convertido = convertido;
-                break;
-            case 2: convertido = convertido*3.6;
-                break;
-            case 3: convertido = convertido*2.236;
-                break;
-        }
-        case 2: 
-        switch(destino){ 
-            case 1: convertido = convertido/3.6;
-                break;
-            case 2: convertido = convertido;
-                break;
-            case 3: convertido = convertido*1.609;
-                break;
-        }
+            convertido = convertido;
+            break;
+        case 2:
+            convertido = convertido * 3.6;
             break;
         case 3:
-        switch(destino){
-            case 1: convertido = convertido/2.236;
-                break;
-            case 2: convertido = convertido/1.609;
-                break;
-            case 3: convertido = convertido;
-                break;
-        }
+            convertido = convertido * 2.236;
             break;
+        }
+    case 2:
+        switch (destino)
+        {
+        case 1:
+            convertido = convertido / 3.6;
+            break;
+        case 2:
+            convertido = convertido;
+            break;
+        case 3:
+            convertido = convertido * 1.609;
+            break;
+        }
+        break;
+    case 3:
+        switch (destino)
+        {
+        case 1:
+            convertido = convertido / 2.236;
+            break;
+        case 2:
+            convertido = convertido / 1.609;
+            break;
+        case 3:
+            convertido = convertido;
+            break;
+        }
+        break;
     }
     return convertido;
 }
+
 // 6. Unidades de potência
 void MenuPot() {
     int opcao;
@@ -274,8 +310,8 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = conversaoComprimento(valorComprimento, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorComprimento, valorConvertido);
+            valorConvertido = conversor_comprimento(valorComprimento, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorComprimento, valorConvertido);
             goto finally;
         }
         case 2:
@@ -337,8 +373,8 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = (valorTemperatura, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorTemperatura, valorConvertido);
+            valorConvertido = conversor_temperatura(valorTemperatura, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorTemperatura, valorConvertido);
             goto finally;
         }
         case 5:
@@ -358,10 +394,9 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = conversaoVelocidade(valorVelocidade, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorVelocidade, valorConvertido);
+            valorConvertido = conversaoVelocidade(valorVelocidade, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorVelocidade, valorConvertido);
             goto finally;
-
         }
         case 6:
         {
