@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <windows.h>
+#include <conio.h>
 #include <math.h>
 #include <string.h>
 
@@ -19,7 +20,6 @@
 // 3. Unidades de volume
 float converterVolume(double valorConvertido, int unidadeOrigem, int unidadeDestino)
 {
-
     // 1 = litro
     // 2 = mililitro
     // 3 = metro cubico
@@ -145,7 +145,7 @@ int main()
 
             // valorConvertido = conversaoComprimento(valorComprimento, opcaoOrigem, opcaoDestino);
             // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorComprimento, valorConvertido);
-            break;
+            goto finally;
         }
         case 2:
         {
@@ -166,7 +166,7 @@ int main()
 
             // valorConvertido = conversaoMassa(valorMassa, opcaoOrigem, opcaoDestino);
             // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorMassa, valorConvertido);
-            break;
+            goto finally;
         }
         case 3:
         {
@@ -187,7 +187,7 @@ int main()
 
             valorConvertido = converterVolume(valorVolume, opcaoOrigem, opcaoDestino);
             printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorVolume, valorConvertido);
-            break;
+            goto finally;
         }
         case 4:
         {
@@ -208,7 +208,7 @@ int main()
 
             // valorConvertido = (valorTemperatura, opcaoOrigem, opcaoDestino);
             // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorTemperatura, valorConvertido);
-            break;
+            goto finally;
         }
         case 5:
         {
@@ -229,7 +229,7 @@ int main()
 
             // valorConvertido = conversaoVelocidade(valorVelocidade, opcaoOrigem, opcaoDestino);
             // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorVelocidade, valorConvertido);
-            break;
+            goto finally;
         }
         case 6:
         {
@@ -250,7 +250,7 @@ int main()
 
             // valorConvertido = (valorPotencia, opcaoOrigem, opcaoDestino);
             // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorPotencia, valorConvertido);
-            break;
+            goto finally;
         }
         case 7:
         {
@@ -270,7 +270,7 @@ int main()
 
             // valorConvertido = conversaoArea(valorArea, opcaoOrigem, opcaoDestino);
             // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorArea, valorConvertido);
-            break;
+            goto finally;
         }
         case 8:
         {
@@ -291,7 +291,7 @@ int main()
 
             // valorConvertido = conversaoTempo(valorTempo, opcaoOrigem, opcaoDestino);
             // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorTempo, valorConvertido);
-            break;
+            goto finally;
         }
         case 9:
         {
@@ -312,12 +312,18 @@ int main()
 
             // valorConvertido = conversaoArmazenamento(valorArmazenamento, opcaoOrigem, opcaoDestino);
             // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorArmazenamento, valorConvertido);
-            break;
+            goto finally;
         }
         default:
             printf("Opção inválida!\n");
             continue;
         }
+
+    finally:
+        printf("\nPressione qualquer tecla para continuar...");
+        getch();
+        printf("\n");
+        continue;
     }
 
     return 0;
