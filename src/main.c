@@ -213,11 +213,11 @@ double conversaoArea(double valorArea, int opcaoOrigem, int opcaoDestino){
     // 1 - Metro quadrado
     // 2 - Centímetro quadrado
 
-    // validando erro na entrada
+    // Validação de erro
     if ((opcaoOrigem < 1 || opcaoOrigem > 2) || (opcaoDestino < 1 || opcaoDestino > 2)) {
         return -1;
     }
-    // utilizando m2 como base
+    // Convertendo para m²
     double area;
     if (opcaoOrigem == 1)
     {
@@ -227,7 +227,7 @@ double conversaoArea(double valorArea, int opcaoOrigem, int opcaoDestino){
     {
         area = valorArea / 10000.0;
     }
-    // convertendo para unidade final
+    // Convertendo para unidade final
     if (opcaoDestino == 1)
     {
         return area;
@@ -237,6 +237,7 @@ double conversaoArea(double valorArea, int opcaoOrigem, int opcaoDestino){
         return area * 10000.0;
     }
 }
+
 // 8. Unidades de tempo (segundos, minutos, horas)
 //
 //
