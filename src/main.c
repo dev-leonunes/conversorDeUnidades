@@ -209,11 +209,34 @@ double conversaoVelocidade(double convertido, int origem, int destino)
 //
 //
 // 7. Unidades de área
-//
-//
-//
-//
-//
+double conversaoArea(double valorArea, int opcaoOrigem, int opcaoDestino){
+    // 1 - Metro quadrado
+    // 2 - Centímetro quadrado
+
+    // validando erro na entrada
+    if ((opcaoOrigem < 1 || opcaoOrigem > 2) || (opcaoDestino < 1 || opcaoDestino > 2)) {
+        return -1;
+    }
+    // utilizando m2 como base
+    double area;
+    if (opcaoOrigem == 1)
+    {
+        area = valorArea;
+    }
+    else if (opcaoOrigem == 2)
+    {
+        area = valorArea / 10000.0;
+    }
+    // convertendo para unidade final
+    if (opcaoDestino == 1)
+    {
+        return area;
+    }
+    else if (opcaoDestino == 2)
+    {
+        return area * 10000.0;
+    }
+}
 // 8. Unidades de tempo (segundos, minutos, horas)
 //
 //
