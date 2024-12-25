@@ -222,11 +222,79 @@ double conversaoVelocidade(double convertido, int origem, int destino)
 //
 //
 // 9. Unidades de armazenamento de dados (Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB))
-//
-//
-//
-//
-//
+
+void converter_unidades(double valor, char unidade_origem, char unidade_destino) {
+    
+    double valor_em_bytes;
+    switch (unidade_origem) {
+        case 'b': // bits
+            valor_em_bytes = valor / 8;
+            break;
+        case 'B': // bytes
+            valor_em_bytes = valor;
+            break;
+        case 'K': // kilobytes
+            valor_em_bytes = valor * 1024;
+            break;
+        case 'M': // megabytes
+            valor_em_bytes = valor * 1024 * 1024;
+            break;
+        case 'G': // gigabytes
+            valor_em_bytes = valor * 1024 * 1024 * 1024;
+            break;
+        case 'T': // terabytes
+            valor_em_bytes = valor * 1024 * 1024 * 1024 * 1024;
+            break;
+        default:
+            printf("Unidade de origem inválida.\n");
+            return;
+    }
+
+    // Converte o valor em bytes para a unidade de destino
+    double valor_final;
+    switch (unidade_destino) {
+        case 'b': // bits
+            valor_final = valor_em_bytes * 8;
+            break;
+        case 'B': // bytes
+            valor_final = valor_em_bytes;
+            break;
+        case 'K': // kilobytes
+            valor_final = valor_em_bytes / 1024;
+            break;
+        case 'M': // megabytes
+            valor_final = valor_em_bytes / (1024 * 1024);
+            break;
+        case 'G': // gigabytes
+            valor_final = valor_em_bytes / (1024 * 1024 * 1024);
+            break;
+        case 'T': // terabytes
+            valor_final = valor_em_bytes / (1024 * 1024 * 1024 * 1024);
+            break;
+        default:
+            printf("Unidade de destino inválida.\n");
+            return;
+    }
+
+    
+    printf("%.2f %c = %.2f %c\n", valor, unidade_origem, valor_final, unidade_destino);
+}
+
+int main() {
+    double valor;
+    char unidade_origem, unidade_destino;
+
+    
+    printf("Digite o valor e a unidade de origem (b=bit, B=byte, K=KB, M=MB, G=GB, T=TB): ");
+    scanf("%lf %c", &valor, &unidade_origem);
+    printf("Digite a unidade de destino (b=bit, B=byte, K=KB, M=MB, G=GB, T=TB): ");
+    scanf(" %c", &unidade_destino);
+
+    
+    converter_unidades(valor, unidade_origem, unidade_destino);
+
+    return 0;
+}
 // 10. Interface de usuário
 int menuPrincipal();
 int menuComprimento();
