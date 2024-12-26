@@ -239,12 +239,61 @@ double conversaoArea(double valorArea, int opcaoOrigem, int opcaoDestino){
 }
 
 // 8. Unidades de tempo (segundos, minutos, horas)
-//
-//
-//
-//
-//
-//
+float conversaoTempo (float valorTempo, int opcaoOrigem, int opcaoDestino){
+
+    // 1 = Segundos 
+    // 2 = Minutos
+    // 3 = Horas
+
+ switch (opcaoOrigem)
+    {
+        break;
+    case 1:
+        switch (opcaoDestino)
+        {
+        case 1:
+           valorTempo = valorTempo;
+            break;
+        case 2:
+            valorTempo = valorTempo / 60;
+            break;
+        case 3:
+            valorTempo = valorTempo / 3600;
+            break;
+        }
+    case 2:
+        switch (opcaoDestino)
+        {
+        case 1:
+            valorTempo = valorTempo * 60;
+            break;
+        case 2:
+            valorTempo = valorTempo;
+            break;
+        case 3:
+            valorTempo = valorTempo / 60;
+            break;
+        }
+        break;
+    case 3:
+        switch (opcaoDestino)
+        {
+        case 1:
+            valorTempo = valorTempo * 3600;
+            break;
+        case 2:
+            valorTempo = valorTempo * 60;
+            break;
+        case 3:
+            valorTempo = valorTempo;
+            break;
+        }
+        break;
+    }
+
+    return valorTempo;
+}
+
 // 9. Unidades de armazenamento de dados (Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB))
 //
 //
@@ -441,8 +490,8 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = conversaoTempo(valorTempo, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorTempo, valorConvertido);
+            valorConvertido = conversaoTempo(valorTempo, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorTempo, valorConvertido);
             goto finally;
         }
         case 9:
