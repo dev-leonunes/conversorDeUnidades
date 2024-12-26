@@ -223,34 +223,60 @@ double conversaoVelocidade(double convertido, int origem, int destino)
 //
 // 9. Unidades de armazenamento de dados (Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB))
 
-void converter_unidades(double valor, char unidade_origem, char unidade_destino) {
+double converter_unidades(double valor, int unidade_origem, int unidade_destino) {
     
     double valor_em_bytes;
     switch (unidade_origem) {
-        case 'b': // bits
+        case 1: // bits
             valor_em_bytes = valor / 8;
             break;
-        case 'B': // bytes
+        case 2: // bytes
             valor_em_bytes = valor;
             break;
-        case 'K': // kilobytes
+        case 3: // kilobytes
             valor_em_bytes = valor * 1024;
             break;
-        case 'M': // megabytes
+        case 4: // megabytes
             valor_em_bytes = valor * 1024 * 1024;
             break;
-        case 'G': // gigabytes
+        case 5: // gigabytes
             valor_em_bytes = valor * 1024 * 1024 * 1024;
             break;
-        case 'T': // terabytes
+        case 6: // terabytes
             valor_em_bytes = valor * 1024 * 1024 * 1024 * 1024;
             break;
         default:
             printf("Unidade de origem inválida.\n");
+            return -1; // Retorna -1 para indicar erro
+    }
+
+    
+    double valor_final;
+    switch (unidade_destino) {
+        case 1: // bits
+            valor_final = valor_em_bytes * 8;
             break;
-            
-    }    
-    return valor;
+        case 2: // bytes
+            valor_final = valor_em_bytes;
+            break;
+        case 3: // kilobytes
+            valor_final = valor_em_bytes / 1024;
+            break;
+        case 4: // megabytes
+            valor_final = valor_em_bytes / (1024 * 1024);
+            break;
+        case 5: // gigabytes
+            valor_final = valor_em_bytes / (1024 * 1024 * 1024);
+            break;
+        case 6: // terabytes
+            valor_final = valor_em_bytes / (1024 * 1024 * 1024 * 1024);
+            break;
+        default:
+            printf("Unidade de destino inválida.\n");
+            return -1;
+    }
+
+    return valor_final;
 }
 
 
