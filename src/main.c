@@ -398,63 +398,54 @@ float conversaoTempo(float valorTempo, int opcaoOrigem, int opcaoDestino)
 }
 
 // 9. Unidades de armazenamento de dados (Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB))
-
-double converter_unidades(double valor, int unidade_origem, int unidade_destino) {
-    
+double converter_unidades(double valor, int unidade_origem, int unidade_destino)
+{
     double valor_em_bytes;
-    switch (unidade_origem) {
-        case 1: // bits
-            valor_em_bytes = valor / 8;
-            break;
-        case 2: // bytes
-            valor_em_bytes = valor;
-            break;
-        case 3: // kilobytes
-            valor_em_bytes = valor * 1024;
-            break;
-        case 4: // megabytes
-            valor_em_bytes = valor * 1024 * 1024;
-            break;
-        case 5: // gigabytes
-            valor_em_bytes = valor * 1024 * 1024 * 1024;
-            break;
-        case 6: // terabytes
-            valor_em_bytes = valor * 1024 * 1024 * 1024 * 1024;
-            break;
-        default:
-            printf("Unidade de origem inválida.\n");
-            return -1; // Retorna -1 para indicar erro
+    switch (unidade_origem)
+    {
+    case 1: // bits
+        valor_em_bytes = valor / 8;
+        break;
+    case 2: // bytes
+        valor_em_bytes = valor;
+        break;
+    case 3: // kilobytes
+        valor_em_bytes = valor * 1024;
+        break;
+    case 4: // megabytes
+        valor_em_bytes = valor * 1024 * 1024;
+        break;
+    case 5: // gigabytes
+        valor_em_bytes = valor * 1024 * 1024 * 1024;
+        break;
+    case 6: // terabytes
+        valor_em_bytes = valor * 1024 * 1024 * 1024 * 1024;
+        break;
     }
 
-    
     double valor_final;
-    switch (unidade_destino) {
-        case 1: // bits
-            valor_final = valor_em_bytes * 8;
-            break;
-        case 2: // bytes
-            valor_final = valor_em_bytes;
-            break;
-        case 3: // kilobytes
-            valor_final = valor_em_bytes / 1024;
-            break;
-        case 4: // megabytes
-            valor_final = valor_em_bytes / (1024 * 1024);
-            break;
-        case 5: // gigabytes
-            valor_final = valor_em_bytes / (1024 * 1024 * 1024);
-            break;
-        case 6: // terabytes
-            valor_final = valor_em_bytes / (1024 * 1024 * 1024 * 1024);
-            break;
-        default:
-            printf("Unidade de destino inválida.\n");
-            return -1;
+    switch (unidade_destino)
+    {
+    case 1: // bits
+        valor_final = valor_em_bytes * 8;
+        break;
+    case 2: // bytes
+        valor_final = valor_em_bytes;
+        break;
+    case 3: // kilobytes
+    case 4: // megabytes
+    case 5: // gigabytes
+    case 6: // terabytes
+        for (int i = 0; i < unidade_destino - 2; i++)
+        {
+            valor_em_bytes = valor_em_bytes / 1024;
+        }
+        valor_final = valor_em_bytes;
+        break;
     }
 
     return valor_final;
 }
-
 
 // 10. Interface de usuário
 int menuPrincipal();
@@ -652,7 +643,7 @@ int main()
         }
         case 9:
         {
-            float valorArmazenamento, valorConvertido;
+            double valorArmazenamento, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuArmazenamento();
@@ -660,15 +651,15 @@ int main()
                 break;
 
             printf("Digite o valor a ser convertido: ");
-            scanf("%f", &valorArmazenamento);
+            scanf("%lf", &valorArmazenamento);
 
             printf("Escolha a unidade de destino\n");
             int opcaoDestino = menuArmazenamento();
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = conversaoArmazenamento(valorArmazenamento, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorArmazenamento, valorConvertido);
+            valorConvertido = converter_unidades(valorArmazenamento, opcaoOrigem, opcaoDestino);
+            printf("O valor %lf convertido para a unidade desejada é %lf\n", valorArmazenamento, valorConvertido);
             goto finally;
         }
         default:
@@ -719,7 +710,6 @@ int menuPrincipal()
 int menuComprimento()
 {
     int opcao;
-    printf("\n");
     printf("--------------------------------\n");
     printf("Unidades de comprimento\n");
     printf("1. Metro (m)\n");
@@ -751,7 +741,6 @@ int menuComprimento()
 int menuMassa()
 {
     int opcao;
-    printf("\n");
     printf("--------------------------------\n");
     printf("Unidades de massa\n");
     printf("1. Quilograma (kg)\n");
@@ -783,7 +772,6 @@ int menuMassa()
 int menuVolume()
 {
     int opcao;
-    printf("\n");
     printf("--------------------------------\n");
     printf("Unidades de volume\n");
     printf("1. Litro (L)\n");
@@ -815,7 +803,6 @@ int menuVolume()
 int menuTemperatura()
 {
     int opcao;
-    printf("\n");
     printf("--------------------------------\n");
     printf("Unidades de temperatura\n");
     printf("1. Celsius (°C)\n");
@@ -847,7 +834,6 @@ int menuTemperatura()
 int menuVelocidade()
 {
     int opcao;
-    printf("\n");
     printf("--------------------------------\n");
     printf("Unidades de velocidade\n");
     printf("1. Quilômetros por hora (km/h)\n");
@@ -879,7 +865,6 @@ int menuVelocidade()
 int menuPotencia()
 {
     int opcao;
-    printf("\n");
     printf("--------------------------------\n");
     printf("Unidades de potência\n");
     printf("1. Watt (W)\n");
@@ -911,7 +896,6 @@ int menuPotencia()
 int menuArea()
 {
     int opcao;
-    printf("\n");
     printf("--------------------------------\n");
     printf("Unidades de área\n");
     printf("1. Metro quadrado (m²)\n");
@@ -942,7 +926,6 @@ int menuArea()
 int menuTempo()
 {
     int opcao;
-    printf("\n");
     printf("--------------------------------\n");
     printf("Unidades de tempo\n");
     printf("1. Segundo (s)\n");
@@ -974,7 +957,6 @@ int menuTempo()
 int menuArmazenamento()
 {
     int opcao;
-    printf("\n");
     printf("--------------------------------\n");
     printf("Unidades de armazenamento de dados\n");
     printf("1. Bit (b)\n");
