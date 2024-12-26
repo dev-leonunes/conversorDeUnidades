@@ -63,7 +63,7 @@ Ou use o compilador do proprio IDE. Apertando o `F6` no VScode.
 
 Ou use o compilar com o `F6` do VScode para já iniciar automaticamente.
 
-4. Siga as instruções no terminal para selecionar as unidades e realizar as conversões.
+2. Siga as instruções no terminal para selecionar as unidades e realizar as conversões.
 
 ## Exemplo de uso
 

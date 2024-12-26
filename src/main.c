@@ -480,15 +480,15 @@ int main()
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuComprimento();
-            if (opcaoOrigem == 0)
+            if (opcaoOrigem == 0 || opcaoOrigem == -1)
                 break;
 
-            printf("Digite o valor a ser convertido: ");
+            printf("\nDigite o valor a ser convertido: ");
             scanf("%f", &valorComprimento);
 
-            printf("Escolha a unidade de destino\n");
+            printf("\nEscolha a unidade de destino\n");
             int opcaoDestino = menuComprimento();
-            if (opcaoDestino == 0)
+            if (opcaoDestino == 0 || opcaoDestino == -1)
                 break;
 
             valorConvertido = conversor_comprimento(valorComprimento, opcaoOrigem, opcaoDestino);
@@ -501,15 +501,15 @@ int main()
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuMassa();
-            if (opcaoOrigem == 0)
+            if (opcaoOrigem == 0 || opcaoOrigem == -1)
                 break;
 
-            printf("Digite o valor a ser convertido: ");
+            printf("\nDigite o valor a ser convertido: ");
             scanf("%lf", &valorMassa);
 
-            printf("Escolha a unidade de destino\n");
+            printf("\nEscolha a unidade de destino\n");
             int opcaoDestino = menuMassa();
-            if (opcaoDestino == 0)
+            if (opcaoDestino == 0 || opcaoDestino == -1)
                 break;
 
             valorConvertido = conversaoMassa(valorMassa, opcaoOrigem, opcaoDestino);
@@ -525,10 +525,10 @@ int main()
             if (opcaoOrigem == 0 || opcaoOrigem == -1)
                 break;
 
-            printf("Digite o valor a ser convertido: ");
+            printf("\nDigite o valor a ser convertido: ");
             scanf("%f", &valorVolume);
 
-            printf("Escolha a unidade de destino\n");
+            printf("\nEscolha a unidade de destino\n");
             int opcaoDestino = menuVolume();
             if (opcaoDestino == 0 || opcaoDestino == -1)
                 break;
@@ -543,15 +543,15 @@ int main()
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuTemperatura();
-            if (opcaoOrigem == 0)
+            if (opcaoOrigem == 0 || opcaoOrigem == -1)
                 break;
 
-            printf("Digite o valor a ser convertido: ");
+            printf("\nDigite o valor a ser convertido: ");
             scanf("%f", &valorTemperatura);
 
-            printf("Escolha a unidade de destino\n");
+            printf("\nEscolha a unidade de destino\n");
             int opcaoDestino = menuTemperatura();
-            if (opcaoDestino == 0)
+            if (opcaoDestino == 0 || opcaoDestino == -1)
                 break;
 
             valorConvertido = conversor_temperatura(valorTemperatura, opcaoOrigem, opcaoDestino);
@@ -564,15 +564,15 @@ int main()
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuVelocidade();
-            if (opcaoOrigem == 0)
+            if (opcaoOrigem == 0 || opcaoOrigem == -1)
                 break;
 
-            printf("Digite o valor a ser convertido: ");
+            printf("\nDigite o valor a ser convertido: ");
             scanf("%lf", &valorVelocidade);
 
-            printf("Escolha a unidade de destino\n");
+            printf("\nEscolha a unidade de destino\n");
             int opcaoDestino = menuVelocidade();
-            if (opcaoDestino == 0)
+            if (opcaoDestino == 0 || opcaoDestino == -1)
                 break;
 
             valorConvertido = conversaoVelocidade(valorVelocidade, opcaoOrigem, opcaoDestino);
@@ -585,15 +585,15 @@ int main()
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuPotencia();
-            if (opcaoOrigem == 0)
+            if (opcaoOrigem == 0 || opcaoOrigem == -1)
                 break;
 
-            printf("Digite o valor a ser convertido: ");
+            printf("\nDigite o valor a ser convertido: ");
             scanf("%f", &valorPotencia);
 
-            printf("Escolha a unidade de destino\n");
+            printf("\nEscolha a unidade de destino\n");
             int opcaoDestino = menuPotencia();
-            if (opcaoDestino == 0)
+            if (opcaoDestino == 0 || opcaoDestino == -1)
                 break;
 
             valorConvertido = conversorPotencia(valorPotencia, opcaoOrigem, opcaoDestino);
@@ -606,14 +606,14 @@ int main()
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuArea();
-            if (opcaoOrigem == 0)
+            if (opcaoOrigem == 0 || opcaoOrigem == -1)
                 break;
 
-            printf("Digite o valor a ser convertido: ");
+            printf("\nDigite o valor a ser convertido: ");
             scanf("%f", &valorArea);
-            printf("Escolha a unidade de destino\n");
+            printf("\nEscolha a unidade de destino\n");
             int opcaoDestino = menuArea();
-            if (opcaoDestino == 0)
+            if (opcaoDestino == 0 || opcaoDestino == -1)
                 break;
 
             valorConvertido = conversaoArea(valorArea, opcaoOrigem, opcaoDestino);
@@ -626,15 +626,15 @@ int main()
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuTempo();
-            if (opcaoOrigem == 0)
+            if (opcaoOrigem == 0 || opcaoOrigem == -1)
                 break;
 
-            printf("Digite o valor a ser convertido: ");
+            printf("\nDigite o valor a ser convertido: ");
             scanf("%f", &valorTempo);
 
-            printf("Escolha a unidade de destino\n");
+            printf("\nEscolha a unidade de destino\n");
             int opcaoDestino = menuTempo();
-            if (opcaoDestino == 0)
+            if (opcaoDestino == 0 || opcaoDestino == -1)
                 break;
 
             valorConvertido = conversaoTempo(valorTempo, opcaoOrigem, opcaoDestino);
@@ -647,15 +647,15 @@ int main()
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuArmazenamento();
-            if (opcaoOrigem == 0)
+            if (opcaoOrigem == 0 || opcaoOrigem == -1)
                 break;
 
-            printf("Digite o valor a ser convertido: ");
+            printf("\nDigite o valor a ser convertido: ");
             scanf("%lf", &valorArmazenamento);
 
-            printf("Escolha a unidade de destino\n");
+            printf("\nEscolha a unidade de destino\n");
             int opcaoDestino = menuArmazenamento();
-            if (opcaoDestino == 0)
+            if (opcaoDestino == 0 || opcaoDestino == -1)
                 break;
 
             valorConvertido = converter_unidades(valorArmazenamento, opcaoOrigem, opcaoDestino);
