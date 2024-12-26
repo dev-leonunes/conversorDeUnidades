@@ -42,47 +42,61 @@ float conversor_comprimento(float comprimento, int escala, int nova_escala)
 }
 
 // 2. Unidades de massa
-double conversaoMassa(double convertido, int origem, int destino){
-    int escolha1,escolha2;
-
+double conversaoMassa(double convertido, int origem, int destino)
+{
     // 1 = gramas
     // 2 = quilos
     // 3 = toneladas
 
-    switch(origem){
-            break;
+    switch (origem)
+    {
+        break;
+    case 1:
+        switch (destino)
+        {
         case 1:
-        switch(destino){
-            case 1: convertido = convertido;
-                break;
-            case 2: convertido = convertido/1000;
-                break;
-            case 3: convertido = convertido*1000000;
-                break;
-        }
-        case 2: 
-        switch(destino){ 
-            case 1: convertido = convertido*1000;
-                break;
-            case 2: convertido = convertido;
-                break;
-            case 3: convertido = convertido/1000;
-                break;
-        }
+            convertido = convertido;
+            break;
+        case 2:
+            convertido = convertido / 1000;
             break;
         case 3:
-        switch(destino){
-            case 1: convertido = convertido*1000000;
-                break;
-            case 2: convertido = convertido*1000;
-                break;
-            case 3: convertido = convertido;
-                break;
-        }
+            convertido = convertido * 1000000;
             break;
+        }
+    case 2:
+        switch (destino)
+        {
+        case 1:
+            convertido = convertido * 1000;
+            break;
+        case 2:
+            convertido = convertido;
+            break;
+        case 3:
+            convertido = convertido / 1000;
+            break;
+        }
+        break;
+    case 3:
+        switch (destino)
+        {
+        case 1:
+            convertido = convertido * 1000000;
+            break;
+        case 2:
+            convertido = convertido * 1000;
+            break;
+        case 3:
+            convertido = convertido;
+            break;
+        }
+        break;
     }
+
     return convertido;
 }
+
 // 3. Unidades de volume
 float converterVolume(double valorConvertido, int unidadeOrigem, int unidadeDestino)
 {
@@ -239,18 +253,69 @@ double conversaoVelocidade(double convertido, int origem, int destino)
 }
 
 // 6. Unidades de potência
-//
-//
-//
-//
-//
+float conversorPotencia(float valorPotencia, int opcaoOrigem, int opcaoDestino)
+{
+    // 1. Watt (W)
+    // 2. Kilowatt (kW)
+    // 3. Cavalo-vapor (cv)
+
+    switch (opcaoOrigem)
+    {
+    case 1:
+        switch (opcaoDestino)
+        {
+        case 1:
+            valorPotencia = valorPotencia;
+            break;
+        case 2:
+            valorPotencia = valorPotencia / 1000;
+            break;
+        case 3:
+            valorPotencia = valorPotencia / 0.7355;
+            break;
+        }
+    case 2:
+        switch (opcaoDestino)
+        {
+        case 1:
+            valorPotencia = valorPotencia * 1000;
+            break;
+        case 2:
+            valorPotencia = valorPotencia;
+            break;
+        case 3:
+            valorPotencia = valorPotencia * 1.3596;
+            break;
+        }
+        break;
+    case 3:
+        switch (opcaoDestino)
+        {
+        case 1:
+            valorPotencia = valorPotencia * 0.7355;
+            break;
+        case 2:
+            valorPotencia = valorPotencia / 1.3596;
+            break;
+        case 3:
+            valorPotencia = valorPotencia;
+            break;
+        }
+        break;
+    }
+
+    return valorPotencia;
+}
+
 // 7. Unidades de área
-double conversaoArea(double valorArea, int opcaoOrigem, int opcaoDestino){
+double conversaoArea(double valorArea, int opcaoOrigem, int opcaoDestino)
+{
     // 1 - Metro quadrado
     // 2 - Centímetro quadrado
 
     // Validação de erro
-    if ((opcaoOrigem < 1 || opcaoOrigem > 2) || (opcaoDestino < 1 || opcaoDestino > 2)) {
+    if ((opcaoOrigem < 1 || opcaoOrigem > 2) || (opcaoDestino < 1 || opcaoDestino > 2))
+    {
         return -1;
     }
     // Convertendo para m²
@@ -272,23 +337,25 @@ double conversaoArea(double valorArea, int opcaoOrigem, int opcaoDestino){
     {
         return area * 10000.0;
     }
+
+    return -1;
 }
 
 // 8. Unidades de tempo (segundos, minutos, horas)
-float conversaoTempo (float valorTempo, int opcaoOrigem, int opcaoDestino){
-
-    // 1 = Segundos 
+float conversaoTempo(float valorTempo, int opcaoOrigem, int opcaoDestino)
+{
+    // 1 = Segundos
     // 2 = Minutos
     // 3 = Horas
 
- switch (opcaoOrigem)
+    switch (opcaoOrigem)
     {
         break;
     case 1:
         switch (opcaoDestino)
         {
         case 1:
-           valorTempo = valorTempo;
+            valorTempo = valorTempo;
             break;
         case 2:
             valorTempo = valorTempo / 60;
@@ -443,7 +510,7 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            valorConvertido = (valorTemperatura, opcaoOrigem, opcaoDestino);
+            valorConvertido = conversor_temperatura(valorTemperatura, opcaoOrigem, opcaoDestino);
             printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorTemperatura, valorConvertido);
             goto finally;
         }
@@ -485,8 +552,8 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = (valorPotencia, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorPotencia, valorConvertido);
+            valorConvertido = conversorPotencia(valorPotencia, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorPotencia, valorConvertido);
             goto finally;
         }
         case 7:
@@ -505,8 +572,8 @@ int main()
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = conversaoArea(valorArea, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorArea, valorConvertido);
+            valorConvertido = conversaoArea(valorArea, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorArea, valorConvertido);
             goto finally;
         }
         case 8:
