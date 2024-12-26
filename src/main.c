@@ -42,11 +42,47 @@ float conversor_comprimento(float comprimento, int escala, int nova_escala)
 }
 
 // 2. Unidades de massa
-//
-//
-//
-//
-//
+double conversaoMassa(double convertido, int origem, int destino){
+    int escolha1,escolha2;
+
+    // 1 = gramas
+    // 2 = quilos
+    // 3 = toneladas
+
+    switch(origem){
+            break;
+        case 1:
+        switch(destino){
+            case 1: convertido = convertido;
+                break;
+            case 2: convertido = convertido/1000;
+                break;
+            case 3: convertido = convertido*1000000;
+                break;
+        }
+        case 2: 
+        switch(destino){ 
+            case 1: convertido = convertido*1000;
+                break;
+            case 2: convertido = convertido;
+                break;
+            case 3: convertido = convertido/1000;
+                break;
+        }
+            break;
+        case 3:
+        switch(destino){
+            case 1: convertido = convertido*1000000;
+                break;
+            case 2: convertido = convertido*1000;
+                break;
+            case 3: convertido = convertido;
+                break;
+        }
+            break;
+    }
+    return convertido;
+}
 // 3. Unidades de volume
 float converterVolume(double valorConvertido, int unidadeOrigem, int unidadeDestino)
 {
@@ -350,7 +386,7 @@ int main()
         }
         case 2:
         {
-            float valorMassa, valorConvertido;
+            double valorMassa, valorConvertido;
 
             printf("Escolha a unidade de origem\n");
             int opcaoOrigem = menuMassa();
@@ -358,15 +394,15 @@ int main()
                 break;
 
             printf("Digite o valor a ser convertido: ");
-            scanf("%f", &valorMassa);
+            scanf("%lf", &valorMassa);
 
             printf("Escolha a unidade de destino\n");
             int opcaoDestino = menuMassa();
             if (opcaoDestino == 0)
                 break;
 
-            // valorConvertido = conversaoMassa(valorMassa, opcaoOrigem, opcaoDestino);
-            // printf("O valor %.2f convertido para a unidade desejada é %.2f\n", valorMassa, valorConvertido);
+            valorConvertido = conversaoMassa(valorMassa, opcaoOrigem, opcaoDestino);
+            printf("O valor %.2lf convertido para a unidade desejada é %.2lf\n", valorMassa, valorConvertido);
             goto finally;
         }
         case 3:
