@@ -398,11 +398,64 @@ float conversaoTempo(float valorTempo, int opcaoOrigem, int opcaoDestino)
 }
 
 // 9. Unidades de armazenamento de dados (Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB))
-//
-//
-//
-//
-//
+
+double converter_unidades(double valor, int unidade_origem, int unidade_destino) {
+    
+    double valor_em_bytes;
+    switch (unidade_origem) {
+        case 1: // bits
+            valor_em_bytes = valor / 8;
+            break;
+        case 2: // bytes
+            valor_em_bytes = valor;
+            break;
+        case 3: // kilobytes
+            valor_em_bytes = valor * 1024;
+            break;
+        case 4: // megabytes
+            valor_em_bytes = valor * 1024 * 1024;
+            break;
+        case 5: // gigabytes
+            valor_em_bytes = valor * 1024 * 1024 * 1024;
+            break;
+        case 6: // terabytes
+            valor_em_bytes = valor * 1024 * 1024 * 1024 * 1024;
+            break;
+        default:
+            printf("Unidade de origem inválida.\n");
+            return -1; // Retorna -1 para indicar erro
+    }
+
+    
+    double valor_final;
+    switch (unidade_destino) {
+        case 1: // bits
+            valor_final = valor_em_bytes * 8;
+            break;
+        case 2: // bytes
+            valor_final = valor_em_bytes;
+            break;
+        case 3: // kilobytes
+            valor_final = valor_em_bytes / 1024;
+            break;
+        case 4: // megabytes
+            valor_final = valor_em_bytes / (1024 * 1024);
+            break;
+        case 5: // gigabytes
+            valor_final = valor_em_bytes / (1024 * 1024 * 1024);
+            break;
+        case 6: // terabytes
+            valor_final = valor_em_bytes / (1024 * 1024 * 1024 * 1024);
+            break;
+        default:
+            printf("Unidade de destino inválida.\n");
+            return -1;
+    }
+
+    return valor_final;
+}
+
+
 // 10. Interface de usuário
 int menuPrincipal();
 int menuComprimento();
