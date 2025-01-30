@@ -48,10 +48,8 @@ mkdir -p ./src/output
 4. Compilar o programa:
 
 ```
-gcc src/main.c -o ./src/output/main.exe
+gcc src/main.c src/interface.c -o ./src/output/main.exe
 ```
-
-Ou use o compilador do proprio IDE. Apertando o `F6` no VScode.
 
 ## Como utilizar
 
@@ -60,8 +58,6 @@ Ou use o compilador do proprio IDE. Apertando o `F6` no VScode.
 ```
 ./src/output/main.exe
 ```
-
-Ou use o compilar com o `F6` do VScode para já iniciar automaticamente.
 
 2. Siga as instruções no terminal para selecionar as unidades e realizar as conversões.
 
